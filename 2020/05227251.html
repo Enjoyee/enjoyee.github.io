@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="ExHddHS4l2jJeVIoVbd6DW3jyud2YKbgshu329Djev8">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"keee.top","root":"/","scheme":"Pisces","version":"8.0.0-rc.2","exturl":false,"sidebar":{"position":"left","Pisces | Gemini":280,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="基于 Mac 环境，其它环境类似操作  Jenkins 安装 官网下载地址： https:&#x2F;&#x2F;jenkins.io&#x2F;zh&#x2F;download&#x2F;  安装完成后自动跳转网页进行初始化设置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jenkins自动化构建Android">
+<meta property="og:url" content="https://keee.top/2020/05227251.html">
+<meta property="og:site_name" content="小破站">
+<meta property="og:description" content="基于 Mac 环境，其它环境类似操作  Jenkins 安装 官网下载地址： https:&#x2F;&#x2F;jenkins.io&#x2F;zh&#x2F;download&#x2F;  安装完成后自动跳转网页进行初始化设置">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2020/05/14/YBIckQ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/05/14/YB7GwT.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/05/14/YB7wlR.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583892762685-d64b5622-9877-44d3-8d9b-aed8cb4d8204.png#align=left&amp;display=inline&amp;height=402&amp;margin=%5Bobject%20Object%5D&amp;originHeight=534&amp;originWidth=991&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583892815909-eb7262fa-f790-41d7-8041-bb6a2a34e259.png#align=left&amp;display=inline&amp;height=467&amp;margin=%5Bobject%20Object%5D&amp;originHeight=620&amp;originWidth=990&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583892867202-c22b9fac-2a67-4edc-aad2-f028dfecd8ff.png#align=left&amp;display=inline&amp;height=718&amp;margin=%5Bobject%20Object%5D&amp;originHeight=954&amp;originWidth=991&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583892925715-3cce9aa0-fd75-4055-8306-fa909b34d19e.png#align=left&amp;display=inline&amp;height=271&amp;margin=%5Bobject%20Object%5D&amp;originHeight=359&amp;originWidth=989&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583892944805-1740edca-42ca-4051-93d1-0c720068beed.png#align=left&amp;display=inline&amp;height=284&amp;margin=%5Bobject%20Object%5D&amp;originHeight=377&amp;originWidth=991&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583892977396-c1dff7a2-85b0-43ee-978e-f454191548a5.png#align=left&amp;display=inline&amp;height=532&amp;margin=%5Bobject%20Object%5D&amp;originHeight=532&amp;originWidth=684&amp;size=0&amp;status=done&amp;style=stroke&amp;width=684">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583893005678-fe69e919-7bf9-49d6-899e-932d7ba5a2b5.png#align=left&amp;display=inline&amp;height=369&amp;margin=%5Bobject%20Object%5D&amp;originHeight=661&amp;originWidth=1336&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583893087500-119cfa61-45da-4df4-a392-644bc8242141.png#align=left&amp;display=inline&amp;height=102&amp;margin=%5Bobject%20Object%5D&amp;originHeight=216&amp;originWidth=1585&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583898796234-c02a69d0-33b0-45f2-8e34-5770579f3eeb.png#align=left&amp;display=inline&amp;height=250&amp;margin=%5Bobject%20Object%5D&amp;originHeight=367&amp;originWidth=1093&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583898807937-c94ac540-93aa-4f28-8129-425a720c7de7.png#align=left&amp;display=inline&amp;height=478&amp;margin=%5Bobject%20Object%5D&amp;originHeight=655&amp;originWidth=1022&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583898827768-ef59b5ac-21bd-4424-ae85-bb85020ee014.png#align=left&amp;display=inline&amp;height=374&amp;margin=%5Bobject%20Object%5D&amp;originHeight=374&amp;originWidth=413&amp;size=0&amp;status=done&amp;style=stroke&amp;width=413">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583898875162-c82044c6-a324-4204-b65d-2a36d5beb4b4.png#align=left&amp;display=inline&amp;height=126&amp;margin=%5Bobject%20Object%5D&amp;originHeight=186&amp;originWidth=1102&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583898894960-8d7a4373-ab4c-4961-9196-d094306ff5d7.png#align=left&amp;display=inline&amp;height=57&amp;margin=%5Bobject%20Object%5D&amp;originHeight=87&amp;originWidth=1139&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583899082207-c053f743-b830-4ada-8450-5802bfd089f7.png#align=left&amp;display=inline&amp;height=285&amp;margin=%5Bobject%20Object%5D&amp;originHeight=371&amp;originWidth=972&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583903517381-e23ee694-043e-4b68-a87f-4768c0655433.png#align=left&amp;display=inline&amp;height=285&amp;margin=%5Bobject%20Object%5D&amp;originHeight=371&amp;originWidth=972&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583904961151-1d021923-64a7-4a43-a20f-47657591958e.png#align=left&amp;display=inline&amp;height=200&amp;margin=%5Bobject%20Object%5D&amp;originHeight=276&amp;originWidth=1027&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583905021439-4e8aff43-4258-4d03-81ca-2fa9bc939e91.png#align=left&amp;display=inline&amp;height=464&amp;margin=%5Bobject%20Object%5D&amp;originHeight=546&amp;originWidth=878&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583905073512-a9a3aea3-e9ad-4d8d-9bba-bd91b51de139.png#align=left&amp;display=inline&amp;height=283&amp;margin=%5Bobject%20Object%5D&amp;originHeight=283&amp;originWidth=732&amp;size=0&amp;status=done&amp;style=stroke&amp;width=732">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583905202422-b3965a29-939a-4ac5-8d21-05e7b0c88f9b.png#align=left&amp;display=inline&amp;height=327&amp;margin=%5Bobject%20Object%5D&amp;originHeight=362&amp;originWidth=826&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583905490920-bf9112aa-d17b-4a55-8a4e-ef613be3d6f4.png#align=left&amp;display=inline&amp;height=514&amp;margin=%5Bobject%20Object%5D&amp;originHeight=514&amp;originWidth=1446&amp;size=0&amp;status=done&amp;style=stroke&amp;width=1446">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583905506494-59ff145b-2ed1-4abb-a9fa-e2800fda8897.png#align=left&amp;display=inline&amp;height=808&amp;margin=%5Bobject%20Object%5D&amp;originHeight=808&amp;originWidth=769&amp;size=0&amp;status=done&amp;style=stroke&amp;width=769">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583905535995-f8e160d4-a40a-4b87-b7e9-70c114cc861b.png#align=left&amp;display=inline&amp;height=534&amp;margin=%5Bobject%20Object%5D&amp;originHeight=544&amp;originWidth=760&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583905553680-862d4f99-a67f-4b6a-9cff-e507ff332a6b.png#align=left&amp;display=inline&amp;height=529&amp;margin=%5Bobject%20Object%5D&amp;originHeight=529&amp;originWidth=681&amp;size=0&amp;status=done&amp;style=stroke&amp;width=681">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583905565642-8c131664-d454-46d5-a7b0-6af778236dfc.png#align=left&amp;display=inline&amp;height=455&amp;margin=%5Bobject%20Object%5D&amp;originHeight=604&amp;originWidth=990&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746">
+<meta property="og:image" content="https://s1.ax1x.com/2020/05/14/YBqO9e.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/05/14/YBLk9g.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583905961338-336b6358-6353-4a4c-9238-d95648bf5c2f.png#align=left&amp;display=inline&amp;height=453&amp;margin=%5Bobject%20Object%5D&amp;originHeight=499&amp;originWidth=821&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583905980688-13435365-360f-4f8a-aa59-df5868fb0f61.png#align=left&amp;display=inline&amp;height=326&amp;margin=%5Bobject%20Object%5D&amp;originHeight=326&amp;originWidth=472&amp;size=0&amp;status=done&amp;style=stroke&amp;width=472">
+<meta property="og:image" content="https://s1.ax1x.com/2020/05/14/YBLf58.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583906185585-a2e16188-7ee8-4f68-915a-d6ddbaed673a.png#align=left&amp;display=inline&amp;height=79&amp;margin=%5Bobject%20Object%5D&amp;originHeight=79&amp;originWidth=312&amp;size=0&amp;status=done&amp;style=none&amp;width=312">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583906185562-1a9f51c8-fce7-447b-a2bd-4655858bbf9a.png#align=left&amp;display=inline&amp;height=67&amp;margin=%5Bobject%20Object%5D&amp;originHeight=67&amp;originWidth=139&amp;size=0&amp;status=done&amp;style=none&amp;width=139">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583906185546-90cbe9d3-d390-4010-aeac-95c5769b23be.png#align=left&amp;display=inline&amp;height=342&amp;margin=%5Bobject%20Object%5D&amp;originHeight=376&amp;originWidth=820&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583906185577-4369f5f2-e7a3-49ab-9c3b-9e71ad7c8e2e.png#align=left&amp;display=inline&amp;height=379&amp;margin=%5Bobject%20Object%5D&amp;originHeight=379&amp;originWidth=634&amp;size=0&amp;status=done&amp;style=none&amp;width=634">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/407428/1583906185615-623fa570-19f1-41cc-8a64-b645d5784ad6.png#align=left&amp;display=inline&amp;height=199&amp;margin=%5Bobject%20Object%5D&amp;originHeight=199&amp;originWidth=378&amp;size=0&amp;status=done&amp;style=none&amp;width=378">
+<meta property="article:published_time" content="2020-05-22T10:05:53.000Z">
+<meta property="article:modified_time" content="2020-05-22T10:05:53.000Z">
+<meta property="article:author" content="Glimmer">
+<meta property="article:tag" content="Jenkins">
+<meta property="article:tag" content="自动化">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/05/14/YBIckQ.png">
+
+<link rel="canonical" href="https://keee.top/2020/05227251.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Jenkins自动化构建Android | 小破站</title>
+  
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-167377793-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
+
+
+  <script data-pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e5232fa4507e0cb3a6ce72bd2ff9f63b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="小破站" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line toggle-line-first"></span>
+        <span class="toggle-line toggle-line-middle"></span>
+        <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">小破站</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">の日常操作</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://keee.top/2020/05227251.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Glimmer">
+      <meta itemprop="description" content="IT互联日常收集">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小破站">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Jenkins自动化构建Android
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-22 18:05:53" itemprop="dateCreated datePublished" datetime="2020-05-22T18:05:53+08:00">2020-05-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>基于 Mac 环境，其它环境类似操作</p>
+</blockquote>
+<h4 id="Jenkins-安装"><a href="#Jenkins-安装" class="headerlink" title="Jenkins 安装"></a>Jenkins 安装</h4><ul>
+<li><p>官网下载地址： <a href="https://jenkins.io/zh/download/" target="_blank" rel="noopener">https://jenkins.io/zh/download/</a></p>
+</li>
+<li><p>安装完成后自动跳转网页进行初始化设置</p>
+<p><a href="https://imgchr.com/i/YBIckQ" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/05/14/YBIckQ.png" alt="YBIckQ.png"></a></p>
+<a id="more"></a>
+</li>
+<li><p>找到该目录，改文件夹下是默认锁定不能读写的，可以更改权限，改成可读写就可以进入查看上面的文件了</p>
+<p><a href="https://imgchr.com/i/YB7GwT" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/05/14/YB7GwT.png" alt="YB7GwT.png"></a></p>
+</li>
+</ul>
+<p>  <a href="https://imgchr.com/i/YB7wlR" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/05/14/YB7wlR.png" alt="YB7wlR.png"></a></p>
+<ul>
+<li><p>除了以上方法还有一种直接命令行查看的方法，输入以下命令键入电脑密码后进行查看密码</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">sudo cat /Users/Shared/Jenkins/Home/secrets/initialAdminPassword</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+</li>
+</ul>
+<h4 id="Jenkins-配置"><a href="#Jenkins-配置" class="headerlink" title="Jenkins 配置"></a>Jenkins 配置</h4><ul>
+<li><p>安装完成自动跳转网页配置</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583892762685-d64b5622-9877-44d3-8d9b-aed8cb4d8204.png#align=left&amp;display=inline&amp;height=402&amp;margin=%5Bobject%20Object%5D&amp;originHeight=534&amp;originWidth=991&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746" alt=""></p>
+</li>
+<li><p>直接选择安装推荐的插件即可，当然你想自己选择安装哪些插件也行，那就选择左边的进行自定义安装，选择后就是漫长的等待下载插件安装过程，插件安装失败可以重试多几次╮(￣▽￣)╭</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583892815909-eb7262fa-f790-41d7-8041-bb6a2a34e259.png#align=left&amp;display=inline&amp;height=467&amp;margin=%5Bobject%20Object%5D&amp;originHeight=620&amp;originWidth=990&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><p>插件安装完成后，创建用户，也可以直接继续使用 admin 用户进行管理</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583892867202-c22b9fac-2a67-4edc-aad2-f028dfecd8ff.png#align=left&amp;display=inline&amp;height=718&amp;margin=%5Bobject%20Object%5D&amp;originHeight=954&amp;originWidth=991&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><p>创建 <code>URL</code>，<code>localhost</code> 可以改为本机 <code>ip</code> 地址</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583892925715-3cce9aa0-fd75-4055-8306-fa909b34d19e.png#align=left&amp;display=inline&amp;height=271&amp;margin=%5Bobject%20Object%5D&amp;originHeight=359&amp;originWidth=989&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><p>初始化完成</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583892944805-1740edca-42ca-4051-93d1-0c720068beed.png#align=left&amp;display=inline&amp;height=284&amp;margin=%5Bobject%20Object%5D&amp;originHeight=377&amp;originWidth=991&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746" alt=""></p>
+</li>
+</ul>
+<p>  <img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583892977396-c1dff7a2-85b0-43ee-978e-f454191548a5.png#align=left&amp;display=inline&amp;height=532&amp;margin=%5Bobject%20Object%5D&amp;originHeight=532&amp;originWidth=684&amp;size=0&amp;status=done&amp;style=stroke&amp;width=684" alt=""></p>
+<ul>
+<li><p>插件管理</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583893005678-fe69e919-7bf9-49d6-899e-932d7ba5a2b5.png#align=left&amp;display=inline&amp;height=369&amp;margin=%5Bobject%20Object%5D&amp;originHeight=661&amp;originWidth=1336&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><p>【Git Parameter】插件，git 仓库的参数，例如分支选择    </p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583893087500-119cfa61-45da-4df4-a392-644bc8242141.png#align=left&amp;display=inline&amp;height=102&amp;margin=%5Bobject%20Object%5D&amp;originHeight=216&amp;originWidth=1585&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><p>【Build Name and Description Setter】插件，设置构建历史描述信息，例如可是设置描述显示二维码</p>
+</li>
+<li><p>【Upload to pgyer】插件，蒲公英上传插件，上传到外网，二维码扫码安装</p>
+</li>
+<li><p>更改设置显示富文本</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583898796234-c02a69d0-33b0-45f2-8e34-5770579f3eeb.png#align=left&amp;display=inline&amp;height=250&amp;margin=%5Bobject%20Object%5D&amp;originHeight=367&amp;originWidth=1093&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746" alt=""></p>
+</li>
+</ul>
+<p>  <img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583898807937-c94ac540-93aa-4f28-8129-425a720c7de7.png#align=left&amp;display=inline&amp;height=478&amp;margin=%5Bobject%20Object%5D&amp;originHeight=655&amp;originWidth=1022&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746" alt=""></p>
+<ul>
+<li><p>修改默认的构建目录，该文件跟上面一开始的初始化密码文件在一起的</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583898827768-ef59b5ac-21bd-4424-ae85-bb85020ee014.png#align=left&amp;display=inline&amp;height=374&amp;margin=%5Bobject%20Object%5D&amp;originHeight=374&amp;originWidth=413&amp;size=0&amp;status=done&amp;style=stroke&amp;width=413" alt=""></p>
+</li>
+</ul>
+<p>  <img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583898875162-c82044c6-a324-4204-b65d-2a36d5beb4b4.png#align=left&amp;display=inline&amp;height=126&amp;margin=%5Bobject%20Object%5D&amp;originHeight=186&amp;originWidth=1102&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746" alt=""></p>
+<p>  修改成你所想修改的目录即可，只需更改前半部分，后面的变量不需要更改，是根据项目自动生成文件夹的</p>
+<p>  <img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583898894960-8d7a4373-ab4c-4961-9196-d094306ff5d7.png#align=left&amp;display=inline&amp;height=57&amp;margin=%5Bobject%20Object%5D&amp;originHeight=87&amp;originWidth=1139&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746" alt=""></p>
+<p>  修改完成后需要重新启动 Jenkins 加载配置</p>
+  <figure class="highlight http"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attribute">http://localhost:8080/reload</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li><p>配置 <code>ANDROID_HOME</code></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583899082207-c053f743-b830-4ada-8450-5802bfd089f7.png#align=left&amp;display=inline&amp;height=285&amp;margin=%5Bobject%20Object%5D&amp;originHeight=371&amp;originWidth=972&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746" alt=""></p>
+</li>
+</ul>
+<p>  <img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583903517381-e23ee694-043e-4b68-a87f-4768c0655433.png#align=left&amp;display=inline&amp;height=285&amp;margin=%5Bobject%20Object%5D&amp;originHeight=371&amp;originWidth=972&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746" alt=""></p>
+<p>  <img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583904961151-1d021923-64a7-4a43-a20f-47657591958e.png#align=left&amp;display=inline&amp;height=200&amp;margin=%5Bobject%20Object%5D&amp;originHeight=276&amp;originWidth=1027&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746" alt=""></p>
+<ul>
+<li><p>配置 Git，填写 Mac 系统安装的地址</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583905021439-4e8aff43-4258-4d03-81ca-2fa9bc939e91.png#align=left&amp;display=inline&amp;height=464&amp;margin=%5Bobject%20Object%5D&amp;originHeight=546&amp;originWidth=878&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746" alt=""></p>
+</li>
+</ul>
+<h4 id="项目配置"><a href="#项目配置" class="headerlink" title="项目配置"></a>项目配置</h4><ul>
+<li><p>新建项目</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583905073512-a9a3aea3-e9ad-4d8d-9bba-bd91b51de139.png#align=left&amp;display=inline&amp;height=283&amp;margin=%5Bobject%20Object%5D&amp;originHeight=283&amp;originWidth=732&amp;size=0&amp;status=done&amp;style=stroke&amp;width=732" alt=""></p>
+</li>
+</ul>
+<p>  <img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583905202422-b3965a29-939a-4ac5-8d21-05e7b0c88f9b.png#align=left&amp;display=inline&amp;height=327&amp;margin=%5Bobject%20Object%5D&amp;originHeight=362&amp;originWidth=826&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746" alt=""></p>
+<ul>
+<li><p>参数化构建</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583905490920-bf9112aa-d17b-4a55-8a4e-ef613be3d6f4.png#align=left&amp;display=inline&amp;height=514&amp;margin=%5Bobject%20Object%5D&amp;originHeight=514&amp;originWidth=1446&amp;size=0&amp;status=done&amp;style=stroke&amp;width=1446" alt=""></p>
+</li>
+</ul>
+<p>  <img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583905506494-59ff145b-2ed1-4abb-a9fa-e2800fda8897.png#align=left&amp;display=inline&amp;height=808&amp;margin=%5Bobject%20Object%5D&amp;originHeight=808&amp;originWidth=769&amp;size=0&amp;status=done&amp;style=stroke&amp;width=769" alt=""></p>
+<ul>
+<li><p>添加 <code>Git</code> 仓库，添加仓库的凭证</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583905535995-f8e160d4-a40a-4b87-b7e9-70c114cc861b.png#align=left&amp;display=inline&amp;height=534&amp;margin=%5Bobject%20Object%5D&amp;originHeight=544&amp;originWidth=760&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746" alt=""></p>
+</li>
+</ul>
+<p>  <img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583905553680-862d4f99-a67f-4b6a-9cff-e507ff332a6b.png#align=left&amp;display=inline&amp;height=529&amp;margin=%5Bobject%20Object%5D&amp;originHeight=529&amp;originWidth=681&amp;size=0&amp;status=done&amp;style=stroke&amp;width=681" alt=""></p>
+<p>  <img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583905565642-8c131664-d454-46d5-a7b0-6af778236dfc.png#align=left&amp;display=inline&amp;height=455&amp;margin=%5Bobject%20Object%5D&amp;originHeight=604&amp;originWidth=990&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746" alt=""></p>
+<blockquote>
+<p> <code>${Branch}</code> 是前面步骤 <code>Git Parameter</code> 定义分支参数。</p>
+</blockquote>
+<ul>
+<li><p>选择 Shell 命令构建</p>
+<p><a href="https://imgchr.com/i/YBqO9e" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/05/14/YBqO9e.png" alt="YBqO9e.png"></a></p>
+</li>
+</ul>
+<blockquote>
+<p>命令如下：</p>
+</blockquote>
+  <figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">this_dir=`pwd`</span><br><span class="line">project_name="/QMEasy"</span><br><span class="line">project_full_dir="${this_dir}${project_name}"</span><br><span class="line">build_type=$BuildType</span><br><span class="line">build_type_debug="Debug"</span><br><span class="line">build_type_release="Release"</span><br><span class="line"></span><br><span class="line">echo '***********************************************.开始执行.*********************************************'</span><br><span class="line">cd $project_full_dir</span><br><span class="line">this_dir=`pwd`</span><br><span class="line">echo "&gt;当前目录：${this_dir}"</span><br><span class="line"></span><br><span class="line">echo '***********************************************gradle 版本********************************************'</span><br><span class="line"><span class="meta">$</span><span class="bash">this_dir/gradlew -v</span></span><br><span class="line">echo '*****************************************************************************************************'</span><br><span class="line"></span><br><span class="line">echo '************************************************当前构建环境*******************************************'</span><br><span class="line">if [ "$build_type" = "$build_type_debug" ]</span><br><span class="line">then</span><br><span class="line">   echo "&gt;测试环境"</span><br><span class="line">elif [ "$build_type" = "$build_type_release" ]</span><br><span class="line">then</span><br><span class="line">   echo "&gt;正式环境"</span><br><span class="line">else</span><br><span class="line">   echo "&gt;环境配置错误，已退出构建..."</span><br><span class="line">   exit</span><br><span class="line">fi</span><br><span class="line">echo '*****************************************************************************************************'</span><br><span class="line"></span><br><span class="line">echo '************************************************当前项目分支*******************************************'</span><br><span class="line">echo "&gt;${Branch}"</span><br><span class="line">echo '*****************************************************************************************************'</span><br><span class="line"></span><br><span class="line">echo "&gt;clean 项目..."</span><br><span class="line"><span class="meta">$</span><span class="bash">this_dir/gradlew clean</span></span><br><span class="line">echo '*****************************************************************************************************'</span><br><span class="line"></span><br><span class="line">echo "&gt;开始构建..."</span><br><span class="line"><span class="meta">$</span><span class="bash">this_dir/gradlew assemble<span class="variable">$BuildType</span></span></span><br><span class="line">echo '*****************************************************************************************************'</span><br><span class="line"></span><br><span class="line">apk_dest_dir=/Volumes/数据/Jenkins/APK/分期易/</span><br><span class="line">echo "&gt;移动apk到指定目录 ---&gt; $apk_dest_dir"</span><br><span class="line">rm -rf $apk_dest_dir</span><br><span class="line">mkdir $apk_dest_dir</span><br><span class="line">apk_src_dir=${WORKSPACE}$project_name/app/build/outputs/apk/${BuildType}/*.apk</span><br><span class="line">mv -f $apk_src_dir $apk_dest_dir</span><br><span class="line">echo "&gt;移动完成..."</span><br><span class="line">echo '*****************************************************************************************************'</span><br><span class="line"></span><br><span class="line">echo "&gt;构建结束，开始上传到蒲公英..."</span><br><span class="line">echo '*****************************************************************************************************'</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<ul>
+<li><p>配置蒲公英上传</p>
+<blockquote>
+<p>key可以在蒲公英说明找到，scandir指的是扫描上传的apk目录，Build Description是构建后的描述信息，这里我配置的是本地的共享目录，img用的是蒲公英的二维码。</p>
+</blockquote>
+<p><a href="https://imgchr.com/i/YBLk9g" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/05/14/YBLk9g.png" alt="YBLk9g.png"></a></p>
+</li>
+</ul>
+<ul>
+<li><p>蒲公英key的获取地址 <a href="https://www.pgyer.com/doc/view/api" target="_blank" rel="noopener">https://www.pgyer.com/doc/view/api</a></p>
+</li>
+<li><p>配置完成后可以开始构建项目</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583905961338-336b6358-6353-4a4c-9238-d95648bf5c2f.png#align=left&amp;display=inline&amp;height=453&amp;margin=%5Bobject%20Object%5D&amp;originHeight=499&amp;originWidth=821&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746" alt=""></p>
+</li>
+</ul>
+<p>  <img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583905980688-13435365-360f-4f8a-aa59-df5868fb0f61.png#align=left&amp;display=inline&amp;height=326&amp;margin=%5Bobject%20Object%5D&amp;originHeight=326&amp;originWidth=472&amp;size=0&amp;status=done&amp;style=stroke&amp;width=472" alt=""></p>
+<ul>
+<li><p>对应的构建输出信息可以查看对应项目的控制台输出</p>
+<p><a href="https://imgchr.com/i/YBLf58" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/05/14/YBLf58.png" alt="YBLf58.png"></a></p>
+</li>
+</ul>
+<h4 id="局域网文件共享"><a href="#局域网文件共享" class="headerlink" title="局域网文件共享"></a>局域网文件共享</h4><blockquote>
+<p>利用 Mac 本身自带的 Apache 进行局域网文件共享，无需传到外网蒲公英等第三方</p>
+</blockquote>
+<ul>
+<li><p>命令行输入 httpd -v 查看对应的版本信息</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583906185585-a2e16188-7ee8-4f68-915a-d6ddbaed673a.png#align=left&amp;display=inline&amp;height=79&amp;margin=%5Bobject%20Object%5D&amp;originHeight=79&amp;originWidth=312&amp;size=0&amp;status=done&amp;style=none&amp;width=312" alt=""></p>
+</li>
+<li><p>命令行输入 sudo apachectl start 启动服务，需要输入 Mac 的登录密码开启</p>
+</li>
+<li><p>浏览器 <a href="">http:/127.0.0.1</a> 进行访问，可以看到网页输出</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583906185562-1a9f51c8-fce7-447b-a2bd-4655858bbf9a.png#align=left&amp;display=inline&amp;height=67&amp;margin=%5Bobject%20Object%5D&amp;originHeight=67&amp;originWidth=139&amp;size=0&amp;status=done&amp;style=none&amp;width=139" alt=""></p>
+</li>
+<li><p>修改文件存放的目录</p>
+</li>
+<li><p>原始目录</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583906185546-90cbe9d3-d390-4010-aeac-95c5769b23be.png#align=left&amp;display=inline&amp;height=342&amp;margin=%5Bobject%20Object%5D&amp;originHeight=376&amp;originWidth=820&amp;size=0&amp;status=done&amp;style=stroke&amp;width=746" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><p>配置文件目录</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583906185577-4369f5f2-e7a3-49ab-9c3b-9e71ad7c8e2e.png#align=left&amp;display=inline&amp;height=379&amp;margin=%5Bobject%20Object%5D&amp;originHeight=379&amp;originWidth=634&amp;size=0&amp;status=done&amp;style=none&amp;width=634" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><p>打开该文件，查找 DocumentRoot 节点，修改为你需要的目录。</p>
+</li>
+<li><p>Root 节点下的文件类型也需要修改，然后输入命令 sudo apachectl restart 重启服务，再次访问 <a href="http://127.0.0.1" target="_blank" rel="noopener">http://127.0.0.1</a> 就会看到你刚才更改目录下的文件。</p>
+<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line">DocumentRoot "/Volumes/文档/apk"</span><br><span class="line"><span class="tag">&lt;<span class="name">Directory</span> "/<span class="attr">Volumes</span>/文档/<span class="attr">apk</span>"&gt;</span></span><br><span class="line">    Options Indexes FollowSymLinks Multiviews</span><br><span class="line">    MultiviewsMatch Any</span><br><span class="line">    AllowOverride All</span><br><span class="line">    Require all granted</span><br><span class="line"><span class="tag">&lt;/<span class="name">Directory</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/407428/1583906185615-623fa570-19f1-41cc-8a64-b645d5784ad6.png#align=left&amp;display=inline&amp;height=199&amp;margin=%5Bobject%20Object%5D&amp;originHeight=199&amp;originWidth=378&amp;size=0&amp;status=done&amp;style=none&amp;width=378" alt=""></p>
+</li>
+<li><p>局域网访问直接输入 <a href="http://本机ip地址" target="_blank" rel="noopener">http://本机ip地址</a></p>
+</li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Glimmer 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="Glimmer 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Glimmer
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://keee.top/2020/05227251.html" title="Jenkins自动化构建Android">https://keee.top/2020/05227251.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Jenkins/" rel="tag"># Jenkins</a>
+              <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/" rel="tag"># 自动化</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/0522bfb2.html" rel="prev" title="Kotlin基础">
+      <i class="fa fa-chevron-left"></i> Kotlin基础
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05228a7d.html" rel="next" title="Java之线程池">
+      Java之线程池 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+    <script data-ad-client="ca-pub-7035366573410673" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Jenkins-安装"><span class="nav-number">1.</span> <span class="nav-text">Jenkins 安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Jenkins-配置"><span class="nav-number">2.</span> <span class="nav-text">Jenkins 配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#项目配置"><span class="nav-number">3.</span> <span class="nav-text">项目配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#局域网文件共享"><span class="nav-number">4.</span> <span class="nav-text">局域网文件共享</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Glimmer"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Glimmer</p>
+  <div class="site-description" itemprop="description">IT互联日常收集</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Enjoyee" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Enjoyee" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Glimmer</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共8.4k字</span>
+  <span class="post-meta-divider">|</span>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  <span class="post-meta-divider">|</span>
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  <span class="post-meta-divider">|</span>
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="30" alpha="0.3" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+  <script data-pjax>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', () => {
+    window.dsqjs = new DisqusJS({
+      api       : '' || 'https://disqus.com/api/',
+      apikey    : 'm8WdBCWSgVFbQvBE0aq2JDVf2Eq38ddRzCKJ0B7Ot0p2BgkxTJ0vpib2ZWRKYAai',
+      shortname : 'xiao-po-zhan',
+      url       : "https://keee.top/2020/05227251.html",
+      identifier: "2020/05227251.html",
+      title     : "Jenkins自动化构建Android",
+    });
+  }, window.DisqusJS);
+});
+</script>
+
+    </div>
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

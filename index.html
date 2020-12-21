@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="ExHddHS4l2jJeVIoVbd6DW3jyud2YKbgshu329Djev8">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"keee.top","root":"/","scheme":"Pisces","version":"8.0.0-rc.2","exturl":false,"sidebar":{"position":"left","Pisces | Gemini":280,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="IT互联日常收集">
+<meta property="og:type" content="website">
+<meta property="og:title" content="小破站">
+<meta property="og:url" content="https://keee.top/index.html">
+<meta property="og:site_name" content="小破站">
+<meta property="og:description" content="IT互联日常收集">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Glimmer">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://keee.top/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>小破站</title>
+  
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-167377793-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
+
+
+  <script data-pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e5232fa4507e0cb3a6ce72bd2ff9f63b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="小破站" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line toggle-line-first"></span>
+        <span class="toggle-line toggle-line-middle"></span>
+        <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">小破站</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">の日常操作</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://keee.top/2020/052213760.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Glimmer">
+      <meta itemprop="description" content="IT互联日常收集">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小破站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/052213760.html" class="post-title-link" itemprop="url">60行代码不到用Python下载无水印抖音视频</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-22 18:05:53" itemprop="dateCreated datePublished" datetime="2020-05-22T18:05:53+08:00">2020-05-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>用到的库 <code>BeautifulSoup</code> ，解析用的是 <code>html.parser</code></p>
+</blockquote>
+<h5 id="模拟-Android-手机浏览器-UA"><a href="#模拟-Android-手机浏览器-UA" class="headerlink" title="模拟 Android 手机浏览器 UA"></a>模拟 <code>Android</code> 手机浏览器 <code>UA</code></h5><figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">ua_phone = {<span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Linux; Android 6.0; '</span></span><br><span class="line">                          <span class="string">'Nexus 5 Build/MRA58N) AppleWebKit/537.36 ('</span></span><br><span class="line">                          <span class="string">'KHTML, like Gecko) Chrome/80.0.3987.116 Mobile Safari/537.36'</span>}</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="模拟-Windows-浏览器-UA"><a href="#模拟-Windows-浏览器-UA" class="headerlink" title="模拟 Windows 浏览器 UA"></a>模拟 <code>Windows</code> 浏览器 <code>UA</code></h5><figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">ua_win = {<span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '</span></span><br><span class="line">                        <span class="string">'AppleWebKit/537.36 (KHTML, like Gecko) '</span></span><br><span class="line">                        <span class="string">'Chrome/80.0.3987.116 Safari/537.36'</span>}</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="对分享的链接进行截取，获得标题跟视频播放的链接"><a href="#对分享的链接进行截取，获得标题跟视频播放的链接" class="headerlink" title="对分享的链接进行截取，获得标题跟视频播放的链接"></a>对分享的链接进行截取，获得标题跟视频播放的链接</h5><figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># 待解析的视频url</span></span><br><span class="line">parse_url = input(<span class="string">"&gt;&gt;请输入抖音分享的完整链接："</span>)</span><br><span class="line">str_http = <span class="string">"http"</span></span><br><span class="line"><span class="keyword">while</span> parse_url.find(str_http) == <span class="number">-1</span>:</span><br><span class="line">    parse_url = input(<span class="string">"请输入正确的链接："</span>)</span><br><span class="line">title_index = parse_url.index(str_http)</span><br><span class="line">copy_index = len(parse_url)</span><br><span class="line">str_copy = <span class="string">"复制此链接"</span></span><br><span class="line"><span class="keyword">if</span> parse_url.find(str_copy) != <span class="number">-1</span>:</span><br><span class="line">    copy_index = parse_url.index(str_copy) - <span class="number">1</span></span><br><span class="line">title = parse_url[<span class="number">0</span>:title_index]</span><br><span class="line"><span class="keyword">while</span> len(title) == <span class="number">0</span>:</span><br><span class="line">    title = input(<span class="string">"&gt;&gt;请输入视频标题："</span>)</span><br><span class="line">url = parse_url[title_index:copy_index]</span><br><span class="line">print(<span class="string">f'&gt;&gt;原链接：<span class="subst">{url}</span>'</span>)</span><br></pre></td></tr></tbody></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/052213760.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+    <script data-ad-client="ca-pub-7035366573410673" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://keee.top/2020/052216966.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Glimmer">
+      <meta itemprop="description" content="IT互联日常收集">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小破站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/052216966.html" class="post-title-link" itemprop="url">Android常见UI单位</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-22 18:05:53" itemprop="dateCreated datePublished" datetime="2020-05-22T18:05:53+08:00">2020-05-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="UI尺寸单位"><a href="#UI尺寸单位" class="headerlink" title="UI尺寸单位"></a>UI尺寸单位</h4><p>Android 中 <code>TypedValue.applyDimension</code> 单位转换的源码：</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TypedValue</span> </span>{</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">float</span> <span class="title">applyDimension</span><span class="params">(<span class="keyword">int</span> unit, <span class="keyword">float</span> value, DisplayMetrics metrics)</span> </span>{</span><br><span class="line">        <span class="keyword">switch</span> (unit) {</span><br><span class="line">        <span class="keyword">case</span> COMPLEX_UNIT_PX:</span><br><span class="line">            <span class="keyword">return</span> value;</span><br><span class="line">        <span class="keyword">case</span> COMPLEX_UNIT_DIP:</span><br><span class="line">            <span class="keyword">return</span> value * metrics.density;</span><br><span class="line">        <span class="keyword">case</span> COMPLEX_UNIT_SP:</span><br><span class="line">            <span class="keyword">return</span> value * metrics.scaledDensity;</span><br><span class="line">        <span class="keyword">case</span> COMPLEX_UNIT_PT:</span><br><span class="line">            <span class="keyword">return</span> value * metrics.xdpi * (<span class="number">1.0f</span>/<span class="number">72</span>);</span><br><span class="line">        <span class="keyword">case</span> COMPLEX_UNIT_IN:</span><br><span class="line">            <span class="keyword">return</span> value * metrics.xdpi;</span><br><span class="line">        <span class="keyword">case</span> COMPLEX_UNIT_MM:</span><br><span class="line">            <span class="keyword">return</span> value * metrics.xdpi * (<span class="number">1.0f</span>/<span class="number">25.4f</span>);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/052216966.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+    <script data-ad-client="ca-pub-7035366573410673" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://keee.top/2020/05228a7d.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Glimmer">
+      <meta itemprop="description" content="IT互联日常收集">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小破站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05228a7d.html" class="post-title-link" itemprop="url">Java之线程池</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-22 18:05:53" itemprop="dateCreated datePublished" datetime="2020-05-22T18:05:53+08:00">2020-05-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="线程池体系"><a href="#线程池体系" class="headerlink" title="线程池体系"></a>线程池体系</h5><p><img src="https://s1.ax1x.com/2020/05/21/YbAtat.png" alt="YbAtat.png"></p>
+<ul>
+<li><p><code>Executor</code> 作为线程池最顶层的接口，它里面只有一个 <code>execute</code> 方法，用于执行任务。线程的创建、调度等细节均由子类实现。</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Executor</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">execute</span><span class="params">(Runnable command)</span></span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p><code>ExecutorService</code> 继承并拓展了 <code>Executor</code> ，内部提供给了更全面的任务提交机制以及线程池关闭的方法。</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ExecutorService</span> <span class="keyword">extends</span> <span class="title">Executor</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">shutdown</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">List&lt;Runnable&gt; <span class="title">shutdownNow</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isShutdown</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isTerminated</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">awaitTermination</span><span class="params">(<span class="keyword">long</span> timeout, TimeUnit unit)</span></span></span><br><span class="line"><span class="function">        <span class="keyword">throws</span> InterruptedException</span>;</span><br><span class="line"></span><br><span class="line">    &lt;T&gt; <span class="function">Future&lt;T&gt; <span class="title">submit</span><span class="params">(Callable&lt;T&gt; task)</span></span>;</span><br><span class="line"></span><br><span class="line">    &lt;T&gt; <span class="function">Future&lt;T&gt; <span class="title">submit</span><span class="params">(Runnable task, T result)</span></span>;</span><br><span class="line"></span><br><span class="line">    Future&lt;?&gt; submit(Runnable task);</span><br><span class="line"></span><br><span class="line">    &lt;T&gt; List&lt;Future&lt;T&gt;&gt; invokeAll(Collection&lt;? extends Callable&lt;T&gt;&gt; tasks)</span><br><span class="line">        <span class="keyword">throws</span> InterruptedException;</span><br><span class="line"></span><br><span class="line">    &lt;T&gt; List&lt;Future&lt;T&gt;&gt; invokeAll(Collection&lt;? extends Callable&lt;T&gt;&gt; tasks,</span><br><span class="line">                                  <span class="keyword">long</span> timeout, TimeUnit unit)</span><br><span class="line">        <span class="keyword">throws</span> InterruptedException;</span><br><span class="line"></span><br><span class="line">    &lt;T&gt; <span class="function">T <span class="title">invokeAny</span><span class="params">(Collection&lt;? extends Callable&lt;T&gt;&gt; tasks)</span></span></span><br><span class="line"><span class="function">        <span class="keyword">throws</span> InterruptedException, ExecutionException</span>;</span><br><span class="line"></span><br><span class="line">    &lt;T&gt; <span class="function">T <span class="title">invokeAny</span><span class="params">(Collection&lt;? extends Callable&lt;T&gt;&gt; tasks,</span></span></span><br><span class="line"><span class="function"><span class="params">                    <span class="keyword">long</span> timeout, TimeUnit unit)</span></span></span><br><span class="line"><span class="function">        <span class="keyword">throws</span> InterruptedException, ExecutionException, TimeoutException</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/05228a7d.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+    <script data-ad-client="ca-pub-7035366573410673" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://keee.top/2020/05227251.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Glimmer">
+      <meta itemprop="description" content="IT互联日常收集">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小破站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05227251.html" class="post-title-link" itemprop="url">Jenkins自动化构建Android</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-22 18:05:53" itemprop="dateCreated datePublished" datetime="2020-05-22T18:05:53+08:00">2020-05-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>基于 Mac 环境，其它环境类似操作</p>
+</blockquote>
+<h4 id="Jenkins-安装"><a href="#Jenkins-安装" class="headerlink" title="Jenkins 安装"></a>Jenkins 安装</h4><ul>
+<li><p>官网下载地址： <a href="https://jenkins.io/zh/download/" target="_blank" rel="noopener">https://jenkins.io/zh/download/</a></p>
+</li>
+<li><p>安装完成后自动跳转网页进行初始化设置</p>
+<p><a href="https://imgchr.com/i/YBIckQ" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/05/14/YBIckQ.png" alt="YBIckQ.png"></a></p></li></ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/05227251.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+    <script data-ad-client="ca-pub-7035366573410673" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://keee.top/2020/0522bfb2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Glimmer">
+      <meta itemprop="description" content="IT互联日常收集">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小破站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/0522bfb2.html" class="post-title-link" itemprop="url">Kotlin基础</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-22 18:05:53" itemprop="dateCreated datePublished" datetime="2020-05-22T18:05:53+08:00">2020-05-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h3><figure class="highlight kotlin"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">max</span><span class="params">(a: <span class="type">Int</span>, b: <span class="type">Int</span>)</span></span>: <span class="built_in">Int</span> = <span class="keyword">if</span>(a&gt;b) a <span class="keyword">else</span> b</span><br></pre></td></tr></tbody></table></figure>
+<p>关键字<code>fun</code>，名称<code>max</code>，括号内的参数列表，先参数名，冒号后面是参数类型，括号后面的冒号跟着返回值类型，如果没有返回值就把冒号跟返回值类型直接去掉，<code>kotlin</code>里面<code>if</code>是有结果的表达式。</p>
+<h3 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h3><figure class="highlight kotlin"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">val</span> a = <span class="number">1</span></span><br><span class="line"><span class="keyword">val</span> a: <span class="built_in">Int</span> = <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="number">2</span></span><br><span class="line"><span class="keyword">var</span> b: <span class="built_in">Int</span> = <span class="number">2</span></span><br></pre></td></tr></tbody></table></figure>
+<p>声明变量的关键字有两个不可变引用<code>val</code>、可变引用<code>var</code>，默认情况下尽可能用<code>val</code>去声明变量，仅在必要的时候把变量声明为<code>var</code>，这样可以让你的代码更接近函数式编程风格。声明变量的时候可以显式的指定变量的类型，也可以直接隐藏去掉(如果已经可以推断出类型)</p>
+<h3 id="字符串格式化模板"><a href="#字符串格式化模板" class="headerlink" title="字符串格式化模板"></a>字符串格式化模板</h3><figure class="highlight kotlin"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">val</span> name = <span class="string">"bob"</span></span><br><span class="line"><span class="keyword">val</span> sex = <span class="string">"男"</span></span><br><span class="line"><span class="keyword">val</span> age = <span class="number">100</span></span><br><span class="line">print(<span class="string">"<span class="subst">${name}</span>的性别为：<span class="variable">$sex</span>，年龄为：<span class="variable">$age</span>"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出结果：bob的性别为：男，年龄为：100</span></span><br></pre></td></tr></tbody></table></figure>
+<p>可以直接用<code>$</code>符号对变量进行引用，还可以用<code>${}</code>这种对表达式进行引用，就像刚才的例子那样，<code>name</code>可以换成表达式进行使用。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/0522bfb2.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+    <script data-ad-client="ca-pub-7035366573410673" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://keee.top/2020/052242399.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Glimmer">
+      <meta itemprop="description" content="IT互联日常收集">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小破站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/052242399.html" class="post-title-link" itemprop="url">Kotlin常见作用域函数</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-22 18:05:53" itemprop="dateCreated datePublished" datetime="2020-05-22T18:05:53+08:00">2020-05-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>let函数</li>
+</ul>
+<blockquote>
+<p>定义一个变量在一个特定的作用域内，避免写一些判空操作</p>
+</blockquote>
+<h5 id="使用："><a href="#使用：" class="headerlink" title="使用："></a>使用：</h5><figure class="highlight kotlin"><table><tbody><tr><td class="code"><pre><span class="line">非空变量，使用it代替<span class="keyword">object</span>对象去访问其公有属性：</span><br><span class="line"><span class="keyword">object</span>.let {</span><br><span class="line">		it.xxx()</span><br><span class="line">		<span class="comment">// 999</span></span><br><span class="line">	  <span class="comment">// return 888</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">可空变量，判空操作，函数内it不为空：</span><br><span class="line"><span class="keyword">object</span>?.let {</span><br><span class="line">		it.xxx()</span><br><span class="line">		<span class="comment">// 999</span></span><br><span class="line">	  <span class="comment">// return 888</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>返回值：最后一行 return 的表达式</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/052242399.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+    <script data-ad-client="ca-pub-7035366573410673" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://keee.top/2020/052261209.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Glimmer">
+      <meta itemprop="description" content="IT互联日常收集">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小破站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/052261209.html" class="post-title-link" itemprop="url">Synchronize & ReentrantLock</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-22 18:05:53" itemprop="dateCreated datePublished" datetime="2020-05-22T18:05:53+08:00">2020-05-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h5><p><code>synchronized</code> 可以用来修饰以下 3 个层面：</p>
+<ol>
+<li><p>修饰实例方法</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">log</span><span class="params">(String text)</span> </span>{</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> index = <span class="number">0</span>; index &lt; <span class="number">5</span>; index++) {</span><br><span class="line">    count++;</span><br><span class="line">    System.out.println(Thread.currentThread().getName() + <span class="string">"："</span> + text + <span class="string">"："</span> + count);</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这种情况下的锁对象是 <code>当前实例对象</code> ，因此只有同一个实例对象调用此方法才会产生互斥效果，不同实例对象之间不会有互斥效果。</p>
+<figure class="highlight kotlin"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> static void main(String[] args) {</span><br><span class="line">  LockTest t1 = new LockTest();</span><br><span class="line">  LockTest t2 = new LockTest();</span><br><span class="line">  Thread thread1 = new Thread(() -&gt; t1.log(<span class="string">"测试1"</span>));</span><br><span class="line">  Thread thread2 = new Thread(() -&gt; t2.log(<span class="string">"测试2"</span>));</span><br><span class="line">  thread1.start();</span><br><span class="line">  thread2.start();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>上面代码例子，调用的是不通对象的实例方法，所以彼此之间是不会有排斥的，运行输出如下：</p>
+<p><img src="https://s1.ax1x.com/2020/05/18/YfXwYF.png" alt="YfXwYF.png"></p>
+</li>
+<li><p>修饰静态方法</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(String text)</span> </span>{</span><br><span class="line">  index++;</span><br><span class="line">  System.out.println(Thread.currentThread().getName() + <span class="string">"："</span> + text + <span class="string">"："</span> + index);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li></ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/052261209.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+    <script data-ad-client="ca-pub-7035366573410673" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  </article>
+  
+  
+  
+
+
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Glimmer"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Glimmer</p>
+  <div class="site-description" itemprop="description">IT互联日常收集</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Enjoyee" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Enjoyee" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Glimmer</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共8.4k字</span>
+  <span class="post-meta-divider">|</span>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  <span class="post-meta-divider">|</span>
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  <span class="post-meta-divider">|</span>
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="30" alpha="0.3" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+  <script data-pjax>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+    </div>
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
